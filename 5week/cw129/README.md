@@ -30,3 +30,15 @@
         서버-서버, 클라이언트-서버, 양방향 통신을 지원하지만 브라우저에선 gRPC 통신을 지원하지않음
         스트리밍이 가능
 
+## gRPC 종류
+![image](https://github.com/CW129/go_lang_study/assets/104714337/99fdf66a-6d63-4965-8222-887145b2e523)
+
+        Unary RPC : 하나의 요청을 보내고 하나의 응답을 받음(기본 형태)
+        Server Streaming RPC : 하나의 요청에 서버가 여러번 응답을 보낼수 있는 형태(서버에서 다량의 데이터를 받아와야할때 적합)
+        Client Streaming RPC : 여러 데이터를 서버에 보내 단항 응답을 받는 형태(다량의 데이터를 서버로 보내야할때 적합)
+        Bidirectional Streaming RPC : 양방향 스트림
+
+
+* 참고
+https://velog.io/@p9595jh/Go-gRPC-%EC%9D%B4%EC%9A%A9%ED%95%B4%EC%84%9C-%ED%94%BC%EC%96%B4-%EB%85%B8%EB%93%9C-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0#client
+https://grpc.io/docs/what-is-grpc/core-concepts/#server-streaming-rpc
