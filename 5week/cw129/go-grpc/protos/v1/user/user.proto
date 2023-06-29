@@ -4,9 +4,21 @@ package v1.user;
 
 option go_package = "go-grpc/protos/v1/user";
 
+import "protos/v1/google/api/annotations.proto";
+
 service User {
-    rpc GetUser(GetUserRequest) returns (GetUserResponse);
-    rpc ListUsers(ListUsersRequest) returns (ListUsersResponse);
+    rpc GetUser(GetUserRequest) returns (GetUserResponse){
+        option (google.api.http) = {
+            post: "/getuser"
+            body: "*"
+        };
+    };
+    rpc ListUsers(ListUsersRequest) returns (ListUsersResponse){
+        option (google.api.http) = {
+            post: "/listuser"
+            body: "*"
+        };
+    };
 }
 
 message UserMessage {
