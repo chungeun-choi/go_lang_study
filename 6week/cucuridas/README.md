@@ -55,11 +55,31 @@
     
     | 필드 명 | 용도 |
     | --- | --- |
-    | Use | 한 줄로 되어진 간단한 명령어 설명 |
+    | Use | 서브 커맨드 이름 |
     | Short | help 플래그를 통해 보여지는 간단한 명령어 설명 |
     | Long | help 플래그를 통해 보여지는 상세한 명령어 설명 |
     | Args | 사용자에 의해 입력되는 값 |
     | Run | 해당 커맨드를 통해 실행되는 비즈니스 로직 |
+    
+    <aside>
+    💡 Args validatation check를 위한 함수 구현
+    
+    ```go
+    Args: func(cmd *cobra.Command, args []string) error {
+    		if len(args) != 1 {
+    			return errors.New("enter the URL")
+    		}
+    
+    		_, err := url.ParseRequestURI(args[0])
+    		if err != nil {
+    			return errors.New("invalid URL")
+    		}
+    
+    		return nil
+    	},
+    ```
+    
+    </aside>
     
     2) 정의 후 rootCmd정의
     
