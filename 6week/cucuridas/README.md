@@ -62,7 +62,7 @@
     | Run | 해당 커맨드를 통해 실행되는 비즈니스 로직 |
     
     <aside>
-    💡 Args validatation check를 위한 함수 구현
+    💡 **Args validatation check를 위한 함수 구현**
     
     ```go
     Args: func(cmd *cobra.Command, args []string) error {
@@ -102,3 +102,22 @@ cmdEcho.AddCommand(cmdTimes)
 ```go
 rootCmd.Execute()
 ```
+
+# kubectl - apply 코드 분석
+
+### 구조체
+
+| 이름 | 설명 | 모듈 이름 |
+| --- | --- | --- |
+| ApplyFlags | CLI 플래그가 수집하느 ㄴ정보를 반영하여 옵션으로 변환, 이 옵션은 명령어 런타임 요구 사항을 반영하고 구조체의 변환을 줄이기 위해 사용 | apply.go |
+| ApplyOptions | apply 명령어를 위한 플래그나 다른 설정 입력 값을 정의한 구조체 | apply.go |
+| ApplyDeleteOptions | apply 명령시 삭제해야할 요소를 설정하는 옵션 구조체 | applyset_pruner.go |
+| PruneObject | prune 객체는 prune 중 일부분 삭제해야하는 api 객체 입니다 | applyset_pruner.go |
+| ApplySet | ApplySet은 ApplySet Apply/Prune에 대한 정보를 추적 | applyset.go |
+| ApplySetParentRef | ApplySetParentRef는 적용 세트를 추적하는 데 사용되는 상위 개체의 개체 및 유형 메타를 저장합니다. | applyset.go |
+| ApplySetTooling | Apply가 호출된 이름과 version 정보를 담아두는 구조체 | applyset.go |
+| Patcher | Patcher는 OpenAPI 개체를 패치하기 위한 옵션을 정의합니다. | patcher.go |
+| Pruner | 메니페스트로 정의되어지지 않은 자원을 삭제하기 위한 정보가 담겨진 구조체 | prune.go |
+| ViewLastAppliedOptions | ‘apply view-last-applied’ 명령어를 통해 출력되는 구조체 | apply_view_last_applied.go |
+| SetLastAppliedOptions | ‘apply set-last-applied’ 명령어를 통해 출력되는 구조체 | apply_set_last_applied.go |
+| PatchBuffer | 적용할 변경 사항을 캐시에 담아두는 구조체 | apply_set_last_applied.go |
