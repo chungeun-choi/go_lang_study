@@ -1,4 +1,4 @@
-package _map
+package example_map
 
 func Map[T, M any](a []T, f func(b T) M) []M {
 	rst := make([]M, len(a))
